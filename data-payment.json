@@ -1,6 +1,6 @@
 {
   "settings": {
-    "useFee": true,
+    "useFee": false,
     "feeAmount": 1,
     "theme": "blue-white"
   },
