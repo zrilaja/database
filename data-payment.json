@@ -1,0 +1,83 @@
+{
+  "settings": {
+    "useFee": false,
+    "feeAmount": 0,
+    "theme": "blue-white"
+  },
+  "donations": [
+    {
+      "reference": "014799624173",
+      "name": "Mon",
+      "amount": 20000,
+      "message": "jangan lambat",
+      "status": "success",
+      "timestamp": "2025-04-08T09:55:23.984Z",
+      "buyer_reff": "NOBU / RA*******",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1518/585423059_skyzo.png",
+      "startTime": "1744105163984"
+    },
+    {
+      "reference": "014755849153",
+      "name": "Vanz",
+      "amount": 8000,
+      "message": "JANGAN LUPA THR NYA PLERR",
+      "status": "success",
+      "timestamp": "2025-04-08T09:39:23.984Z",
+      "buyer_reff": "NOBU / MU******************",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1518/585423059_skyzo.png",
+      "startTime": "1744105163984"
+    },
+    {
+      "reference": "1c4enhr73636",
+      "name": "Rado",
+      "amount": 11000,
+      "message": "Topup epep",
+      "status": "success",
+      "timestamp": "2025-04-09T11:01:23.984Z",
+      "buyer_reff": "NOBU / TA**********",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1518/585423059_skyzo.png",
+      "startTime": "1744105163984"
+    },
+    {
+      "reference": "1c4enhr73636",
+      "name": "Nexoo",
+      "amount": 24000,
+      "message": "",
+      "status": "success",
+      "timestamp": "2025-04-09T11:01:23.984Z",
+      "buyer_reff": "NOBU / TA**********",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1518/585423059_skyzo.png",
+      "startTime": "1744105163984"
+    },
+    {
+      "idqris": "1744220468976",
+      "reference": "1c51hiv93184",
+      "name": "faaz",
+      "amount": 6000,
+      "message": "",
+      "status": "success",
+      "timestamp": "2025-04-09T17:41:26.481Z",
+      "buyer_reff": "NOBU / 08**********                  ",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1550/586088142_skyzo.png",
+      "startTime": "1744220469292"
+    },
+    {
+      "idqris": "469fb5cd-6e02-4717-9de4-aea3c679601a",
+      "reference": "1c51sj993248",
+      "name": "Bhimz",
+      "amount": 4,
+      "message": "panel",
+      "status": "success",
+      "timestamp": "2025-04-09T17:52:46.636Z",
+      "buyer_reff": "NOBU / 08**********                  ",
+      "brand_name": "DANA",
+      "qrImageUrl": "https://img12.pixhost.to/images/1550/586090626_skyzo.png",
+      "startTime": "1744221112590"
+    }
+  ]
+}
