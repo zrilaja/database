@@ -1,0 +1,8 @@
+{
+  "settings": {
+    "useFee": false,
+    "feeAmount": 1,
+    "theme": "blue-white"
+  },
+  "donations": []
+}
