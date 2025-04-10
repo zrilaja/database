@@ -115,7 +115,7 @@
       "name": "uhu",
       "amount": 10,
       "message": "",
-      "status": "pending",
+      "status": "expired",
       "timestamp": "2025-04-10T11:07:48.525Z",
       "buyer_reff": "",
       "brand_name": "",
