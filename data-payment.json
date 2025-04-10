@@ -81,14 +81,14 @@
     },
     {
       "idqris": "c7930633-c5f5-47a7-bbeb-b7b43020b8c5",
-      "reference": "c7930633-c5f5-47a7-bbeb-b7b43020b8c5",
+      "reference": "014846043586",
       "name": "Abidev",
       "amount": 3,
       "message": "",
-      "status": "pending",
-      "timestamp": "2025-04-10T05:04:52.688Z",
-      "buyer_reff": "",
-      "brand_name": "",
+      "status": "success",
+      "timestamp": "2025-04-10T05:05:57.642Z",
+      "buyer_reff": "NOBU / 08**********",
+      "brand_name": "DANA",
       "qrImageUrl": "https://img12.pixhost.to/images/1562/586246127_skyzo.png",
       "startTime": "1744261492688"
     }
