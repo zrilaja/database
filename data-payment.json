@@ -65,58 +65,6 @@
       "brand_name": "DANA",
       "qrImageUrl": "https://img12.pixhost.to/images/1550/586088142_skyzo.png",
       "startTime": "1744220469292"
-    },
-    {
-      "idqris": "469fb5cd-6e02-4717-9de4-aea3c679601a",
-      "reference": "1c51sj993248",
-      "name": "Bhimz",
-      "amount": 4,
-      "message": "panel",
-      "status": "success",
-      "timestamp": "2025-04-09T17:52:46.636Z",
-      "buyer_reff": "NOBU / 08**********                  ",
-      "brand_name": "DANA",
-      "qrImageUrl": "https://img12.pixhost.to/images/1550/586090626_skyzo.png",
-      "startTime": "1744221112590"
-    },
-    {
-      "idqris": "c7930633-c5f5-47a7-bbeb-b7b43020b8c5",
-      "reference": "014846043586",
-      "name": "Abidev",
-      "amount": 3,
-      "message": "",
-      "status": "success",
-      "timestamp": "2025-04-10T05:05:57.642Z",
-      "buyer_reff": "NOBU / 08**********",
-      "brand_name": "DANA",
-      "qrImageUrl": "https://img12.pixhost.to/images/1562/586246127_skyzo.png",
-      "startTime": "1744261492688"
-    },
-    {
-      "idqris": "cd6e144b-6282-46a3-8642-f119cfdcb236",
-      "reference": "014844148386",
-      "name": "Dikz",
-      "amount": 57,
-      "message": "",
-      "status": "success",
-      "timestamp": "2025-04-10T06:17:05.041Z",
-      "buyer_reff": "NOBU / 08**********",
-      "brand_name": "DANA",
-      "qrImageUrl": "https://img12.pixhost.to/images/1563/586260237_skyzo.png",
-      "startTime": "1744265788869"
-    },
-    {
-      "idqris": "67376757-31e4-4c25-afa0-e00f0f131093",
-      "reference": "014845880486",
-      "name": "Bintang",
-      "amount": 9,
-      "message": "",
-      "status": "success",
-      "timestamp": "2025-04-10T06:30:11.119Z",
-      "buyer_reff": "NOBU / 08**********",
-      "brand_name": "DANA",
-      "qrImageUrl": "https://img12.pixhost.to/images/1563/586263015_skyzo.png",
-      "startTime": "1744266595913"
     }
   ]
 }
