@@ -81,14 +81,14 @@
     },
     {
       "idqris": "02768ca1-c8a7-4937-a389-6c1328e3cfbc",
-      "reference": "02768ca1-c8a7-4937-a389-6c1328e3cfbc",
+      "reference": "8fe58f1a2d96982b046269860291969b",
       "name": "Surono",
       "amount": 1000,
       "message": "",
-      "status": "pending",
-      "timestamp": "2025-04-14T05:17:50.985Z",
-      "buyer_reff": "",
-      "brand_name": "",
+      "status": "success",
+      "timestamp": "2025-04-14T05:17:54.385Z",
+      "buyer_reff": "Pencairan Saldo R#27547",
+      "brand_name": "Orderkuota",
       "qrImageUrl": "https://img1.pixhost.to/images/5017/587584315_skyzo.png",
       "startTime": "1744607870986"
     }
