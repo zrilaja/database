@@ -133,14 +133,14 @@
     },
     {
       "idqris": "8239d4fb-75e8-4091-babb-933bf1eecaca",
-      "reference": "8239d4fb-75e8-4091-babb-933bf1eecaca",
+      "reference": "83b31e0dea1092a8db6b6a34d40bda02",
       "name": "Mon",
       "amount": 20000,
       "message": "ntahlah mau kosongin saldo 🗿",
-      "status": "pending",
-      "timestamp": "2025-04-18T02:01:19.327Z",
-      "buyer_reff": "",
-      "brand_name": "",
+      "status": "success",
+      "timestamp": "2025-04-18T02:01:24.042Z",
+      "buyer_reff": "Pencairan Saldo R#34870",
+      "brand_name": "Orderkuota",
       "qrImageUrl": "https://img1.pixhost.to/images/5110/588972200_skyzo.png",
       "startTime": "1744941679327"
     }
