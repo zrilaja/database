@@ -185,14 +185,14 @@
     },
     {
       "idqris": "d68d74ca-f5f1-4808-a026-281b6882aaef",
-      "reference": "d68d74ca-f5f1-4808-a026-281b6882aaef",
+      "reference": "1cpys7w42631",
       "name": "Okto",
       "amount": 100,
       "message": "",
-      "status": "pending",
-      "timestamp": "2025-04-28T13:40:34.561Z",
-      "buyer_reff": "",
-      "brand_name": "",
+      "status": "success",
+      "timestamp": "2025-04-28T13:41:29.401Z",
+      "buyer_reff": "NOBU / 08**********                  ",
+      "brand_name": "DANA",
       "qrImageUrl": "https://img1.pixhost.to/images/5361/593208321_skyzo.png",
       "startTime": "1745847634562"
     }
