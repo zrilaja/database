@@ -12,7 +12,7 @@ app.use(express.json());
 
 let targets = {};
 
-app.get('/', (req, res) => res.render('index.html', { error: null }));
+app.get('/', (req, res) => res.render('index', { error: null }));
 
 io.on('connection', (socket) => {
     socket.on('register_target', (data) => {
