@@ -4,7 +4,7 @@ const app = express();
 const PORT = 3000;
 
 // ======== KONFIGURASI GITHUB ========
-const GITHUB_TOKEN = 'ghp_xxxxxxxxxxxxxxxxxxxx'; // GANTI DENGAN TOKEN LO
+const GITHUB_TOKEN = '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'; // GANTI DENGAN TOKEN LO
 const OWNER = 'zrilaja';                      // GANTI
 const REPO = 'database';                       // GANTI
 const BRANCH = 'main';                             // BRANCH
