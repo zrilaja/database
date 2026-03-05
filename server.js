@@ -36,6 +36,8 @@ function writeResults(data) {
     fs.writeFileSync(RESULTS_FILE, JSON.stringify(data, null, 2));
 }
 
+app.get('/', (req, res) => res.sendFile(path.join('index')));
+
 // Endpoint: register device
 app.post('/register', (req, res) => {
     const { deviceId, info } = req.body;
