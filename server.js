@@ -36,7 +36,9 @@ function writeResults(data) {
     fs.writeFileSync(RESULTS_FILE, JSON.stringify(data, null, 2));
 }
 
-app.get('/', (req, res) => res.sendFile(path.join('index')));
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'))
+});
 
 // Endpoint: register device
 app.post('/register', (req, res) => {
